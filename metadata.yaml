@@ -1,0 +1,24 @@
+# Copyright 2021 Bartosz Bratuś
+# See LICENSE file for licensing details.
+
+# For a complete list of supported options, see:
+# https://discourse.charmhub.io/t/charm-metadata-v2/3674/15
+name: demo-operator
+display-name: |
+  Test minecraft operator
+description: |
+  This is a testing operator and it is not to be used in production
+summary: |
+  MINECRAFT!!!!!!!
+
+# TEMPLATE-TODO: replace with containers for your workload (delete for non-k8s)
+containers:
+  minecraft:
+    resource: minecraft-image
+    
+
+# TEMPLATE-TODO: each container defined above must specify an oci-image resource
+resources:
+  minecraft-image:
+    type: oci-image
+    description: OCI image for minecraft
