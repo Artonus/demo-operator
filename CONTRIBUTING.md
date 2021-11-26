@@ -10,21 +10,15 @@ Create and activate a virtualenv with the development requirements:
 
 ## Code overview
 
-TEMPLATE-TODO: 
-One of the most important things a consumer of your charm (or library)
-needs to know is what set of functionality it provides. Which categories
-does it fit into? Which events do you listen to? Which libraries do you
-consume? Which ones do you export and how are they used?
+The code inside of a charm is responsible for the deployment and management of the charm by handling the configuration changes. The default settings needed to launch the `itzg/minecraft-server` container are located in the `_pebble_layer(self):` function. 
+The handle of the configuration itself is located inside the function:
+`_on_config_changed(self, event: ConfigChangedEvent):`
+
+The tests for the code written are placed in the `tests/test_charm.py` file.
 
 ## Intended use case
 
-TEMPLATE-TODO:
-Why were these decisions made? What's the scope of your charm?
-
-## Roadmap
-
-If this Charm doesn't fulfill all of the initial functionality you were
-hoping for or planning on, please add a Roadmap or TODO here
+This demo operator is to be used as a minimal source for development of the new charms. It provides the minimal required functions that are to be used to correctly build and deploy the charm.
 
 ## Testing
 

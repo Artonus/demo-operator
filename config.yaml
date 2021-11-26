@@ -8,8 +8,8 @@
 # Learn more about config at: https://juju.is/docs/sdk/config
 
 options:
-  thing:
-    default: 🎁
-    description: A thing used by the charm.
+  example-setting:
+    default: "example"
+    description: An example setting used by the charm.
     type: string
   

@@ -2,23 +2,36 @@
 
 ## Description
 
-TODO: Describe your charm in a few paragraphs of Markdown
+This is basic minimal operator that the base for the future work. It contains the minimal required functions to work and be deployed properly.
+This repository is created based on the default charm by Canonical created using the `charmcraft init` command.
+
 
 ## Usage
 
-TODO: Provide high-level usage, such as required config or relations
+### Required components
+To deploy the charm the following programs have to be installed
 
+* Charmcraft
+* Juju
+* Juju bootstrapped cloud provider (AWS, AZURE or local Microk8s cluster)
+
+The installation process for the work on the local environment can be found on the Juju [official website](https://juju.is/docs/sdk/dev-setup).
+
+### Build
+To build the charm, open the terminal and run the command:
+
+```
+charmcraft pack
+```
+The `demo-operator_ubuntu-20.04-amd64.charm` should be created. 
 
 ## Relations
 
-TODO: Provide any relations which are provided or required by your charm
-
+The following operator does not have any existing relations to other operators and can be used indecently.
 ## OCI Images
 
-TODO: Include a link to the default image your charm uses
+This demo operator utilizes the docker image of Minecraft server. The original image is by [itzg](https://github.com/itzg/). The container is available on [DockerHub](https://registry.hub.docker.com/r/itzg/minecraft-server).
 
-## Contributing
+## Development
 
-Please see the [Juju SDK docs](https://juju.is/docs/sdk) for guidelines 
-on enhancements to this charm following best practice guidelines, and
-`CONTRIBUTING.md` for developer guidance.
+To develop own charms based on this demo charm, please follow instructions in the `CONTRIBUTING.md`.

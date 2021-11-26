@@ -11,13 +11,13 @@ description: |
 summary: |
   MINECRAFT!!!!!!!
 
-# TEMPLATE-TODO: replace with containers for your workload (delete for non-k8s)
+# TODO: replace with containers for your workload (delete for non-k8s)
 containers:
   minecraft:
     resource: minecraft-image
     
 
-# TEMPLATE-TODO: each container defined above must specify an oci-image resource
+# TODO: each container defined above must specify an oci-image resource
 resources:
   minecraft-image:
     type: oci-image
