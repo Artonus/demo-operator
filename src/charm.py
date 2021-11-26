@@ -26,8 +26,6 @@ class DemoOperatorCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.pebble_initialized = False
-        #self.framework.observe(self.on.minecraft_pebble_ready, self._on_minecraft_pebble_ready)
         self.framework.observe(self.on.config_changed, self._on_config_changed)
 
     def _on_config_changed(self, event: ConfigChangedEvent):
@@ -63,7 +61,7 @@ class DemoOperatorCharm(CharmBase):
                 "minecraft": {
                     "override": "replace",
                     "summary": "minecraft",
-                    "command" : self._pebble_layer_command,
+                    "command": self._pebble_layer_command,
                     "startup": "enabled",
                     "environment": {
                         "EULA": "TRUE"
@@ -74,33 +72,8 @@ class DemoOperatorCharm(CharmBase):
 
     @property
     def _pebble_layer_command(self):
-        #return """HEALTHCHECK &{["CMD-SHELL" "mc-health"] "0s" "0s" "1m0s" '\x00'}"""
+        """Returns the command needed to run the minecraft continer"""
         return "/start"
-
-    def _on_minecraft_pebble_ready(self, event: PebbleReadyEvent):
-        """Define and start a workload using the Pebble API."""
-        logger.warning("Entered the pebble ready action")
-        # Get a reference the container attribute on the PebbleReadyEvent
-        container = event.workload
-        # Define an initial Pebble layer configuration
-        pebble_layer = self._pebble_layer()
-        # Add initial Pebble config layer using the Pebble API
-        container.add_layer("minecraft", pebble_layer, combine=True)
-        # Autostart any services that were defined with startup: enabled
-        container.autostart()
-        # Learn more about statuses in the SDK docs:
-        # https://juju.is/docs/sdk/constructs#heading--statuses
-        self.unit.status = ActiveStatus()
-        self.pebble_initialized = True
-
-    def _on_fortune_action(self, event):
-        """Just an example to show how to receive actions."""
-        fail = event.params["fail"]
-        if fail:
-            event.fail(fail)
-        else:
-            event.set_results({"fortune": "A bug in the code is worth two in the documentation."})
-
 
 if __name__ == "__main__":
     main(DemoOperatorCharm)
